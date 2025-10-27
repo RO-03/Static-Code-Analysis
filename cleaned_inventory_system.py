@@ -24,11 +24,11 @@ def add_item(stock_data, item="default", qty=0, logs=None):
         qty (int): The quantity to add.
         logs (list, optional): A list to append log messages to.
     """
-    # Fix: (Pylint W0102) Mutable default arg
+    # Fix :Mutable default arg
     if logs is None:
         logs = []
 
-    # Fix: (Runtime Error) Implement input validation
+    # Fix :Implement input validation
     if not isinstance(item, str) or not isinstance(qty, int):
         logging.error("Invalid types: Item must be str, qty must be int.")
         return
@@ -39,7 +39,7 @@ def add_item(stock_data, item="default", qty=0, logs=None):
 
     stock_data[item] = stock_data.get(item, 0) + qty
 
-    # Fix: (Pylint C0209) Use f-string
+    # Fix  :Use f-string
     log_message = f"{datetime.now()}: Added {qty} of {item}"
     logs.append(log_message)
     logging.info(log_message)
@@ -80,7 +80,7 @@ def get_qty(stock_data, item):
     Returns:
         int: The quantity of the item, or 0 if not found.
     """
-    # Fix: Use .get() to prevent crash if item doesn't exist
+    # Fix  : Use .get() to prevent crash if item doesn't exist
     return stock_data.get(item, 0)
 
 
@@ -95,8 +95,8 @@ def load_data(file="inventory.json"):
         dict: The loaded stock data, or an empty dict on failure.
     """
     try:
-        # Fix: (Pylint R1732) Use 'with' statement
-        # Fix: (Pylint W1514) Add encoding
+        # Fix  :Use 'with' statement
+        # Fix  :Add encoding
         with open(file, "r", encoding="utf-8") as f:
             data = json.loads(f.read())
             logging.info("Data loaded from %s.", file)
@@ -118,8 +118,8 @@ def save_data(stock_data, file="inventory.json"):
         file (str): The filename to save data to.
     """
     try:
-        # Fix: (Pylint R1732) Use 'with' statement
-        # Fix: (Pylint W1514) Add encoding
+        # Fix:Use 'with' statement
+        # Fix:Add encoding
         with open(file, "w", encoding="utf-8") as f:
             # Use indent=4 for readable JSON
             f.write(json.dumps(stock_data, indent=4))
@@ -164,9 +164,9 @@ def main():
     stock_data = load_data()
     item_logs = []
 
-    # Fix: (Pylint C0103) Rename all function calls to snake_case
+    # Fix  :Rename all function calls to snake_case
     add_item(stock_data, "apple", 10, item_logs)
-    # Fix: (Flake8 E261) Add two spaces before inline comment
+    # Fix  :Add two spaces before inline comment
     add_item(stock_data, "banana", 5, item_logs)  # Assuming -2 was a typo
     add_item(stock_data, 123, "ten", item_logs)  # Now handled by validation
 

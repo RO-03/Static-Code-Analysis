@@ -1,6 +1,4 @@
-************* Module cleaned_inventory_system
-cleaned_inventory_system.py:188:0: C0304: Final newline missing (missing-final-newline)
 
-------------------------------------------------------------------
-Your code has been rated at 9.86/10 (previous run: 9.86/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.86/10, +0.14)
 
